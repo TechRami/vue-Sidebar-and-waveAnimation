@@ -1,10 +1,24 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <Sidebar />
   </div>
-  <router-view/>
+  <WavyAnim />
+  <div :style="{ 'margin-left': sidebarWidth }">
+    <router-view />
+  </div>
 </template>
+
+<script>
+import Sidebar from "./components/Sidebar.vue";
+import WavyAnim from "./components/WavyAnim.vue";
+import { sidebarWidth } from "./components/stateMng";
+export default {
+  components: { Sidebar, WavyAnim },
+  setup() {
+    return { sidebarWidth };
+  },
+};
+</script>
 
 <style>
 #app {
@@ -16,15 +30,5 @@
 }
 
 #nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
 }
 </style>
